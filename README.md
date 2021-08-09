@@ -53,3 +53,10 @@ Si tu n'as jamais utilisé yarn, sache simplement que la commande `yarn` effectu
 React testing library est configuré et utilisable via `yarn test` pour ton confort, mais le coverage de l'application n'est pas demandé.
 
 Enjoy!
+
+
+Je me permets d'ajouter ceci car je fais en sorte de travailler avec un serveur local avec json-server:
+
+-Installer JSON-SERVER : `npm i -g json-server`
+
+-Faire tourner le back : `json-server --w src/assets/db.json --port 3003`
