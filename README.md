@@ -59,4 +59,4 @@ Je me permets d'ajouter ceci car je fais en sorte de travailler avec un serveur 
 
 -Installer JSON-SERVER : `npm i -g json-server`
 
--Faire tourner le back : `json-server --w src/assets/db.json --port 3003`
+-Faire tourner le back : `json-server --w src/assets/db.json --port 3004`

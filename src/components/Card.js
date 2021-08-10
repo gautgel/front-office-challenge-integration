@@ -3,11 +3,11 @@ import {Card} from 'antd';
 
 const { Meta } = Card;
 
-const CardTrial = () => {
+const CardTrial = ({name, date, src, sport}) => {
     return (
-        <div style={{ display: "flex", justifyContent: "center", margin: "20px 0"}}>
-            <Card hoverable style={{width: "250px"}} cover={<img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png" />}>
-                <Meta title="Sport" description="28/07/2021 - 11:00"/>
+        <div id={sport} style={{ display: "flex", justifyContent: "center", margin: "20px 0"}}>
+            <Card className="card-media" hoverable cover={<img alt={`épreuve de ${name}`} src={src} style={{width: "100%", height: "200px", objectFit: "cover"}} />}>
+                <Meta title={name} description={date}/>
             </Card>
         </div>
     );

@@ -1,56 +1,38 @@
-import React from 'react';
-import { Typography, Select, Carousel } from 'antd';
-import { LeftCircleOutlined, RightCircleOutlined} from '@ant-design/icons';
-import CardTrial from './Card';
+import React, { useEffect, useState } from 'react';
+import { Typography, Select } from 'antd';
+import CarouselTrial from './Carousel';
+import axios from 'axios';
 
 const { Option } = Select;
 const { Title } = Typography;
 
 const Trial = () => {
-    const tags = ["Aviron-Double","Aviron-Solo","Cyclisme sur route","Badminton-Simple homme","Badminton-Simple femme"];
-    const responsiveCarousel= [
-        {
-            breakpoint: 1424,
-            settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            }
-        },
-        {
-            breakpoint: 1200,
-            settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
-            }
-        },
-        {
-            breakpoint: 800,
-            settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            }
-        },
-    ];
+    const tags = ["Aviron - Double","Aviron - Solo","Cyclisme sur route","Badminton - Simple homme","Badminton - Double femme"];
+    const [trialsData, setTrialsData] = useState([]);
+    const [tagsData, setTagsData] = useState(tags);
+    const [empty, setEmpty] = useState(false);
+    // const [medalsData, setMedalData] = useState([]);
+    
+    const getData = () => {
+      axios
+        .get("http://localhost:3004/nextEvent")
+        .then((res)=>setTrialsData(res.data));
+    };
+
+    useEffect(() => {
+      getData();
+    }, []);
 
     const changingTag = (e)=>{
-        console.log(e);
-    }
-    function onChange(a, b, c) {
-        console.log(a, b, c);
+      setTagsData(e);
+      console.log(e.length);
+      if (e.length === 0) {
+        setEmpty(true);
+      }else{
+        setEmpty(false)
+      }
     }
 
-    function SampleNextArrow(props) {
-        const { style, onClick, className } = props;
-        return (
-            <RightCircleOutlined className={className} style={{...style, fontSize:"35px", color: "grey", width: "auto"}} onClick={onClick}></RightCircleOutlined>
-        );
-    }
-    function SamplePrevArrow(props) {
-        const { style, onClick, className } = props;
-        return (
-            <LeftCircleOutlined className={className} style={{...style, fontSize:"35px", color: "grey", zIndex: "1", width: "auto"}} onClick={onClick}></LeftCircleOutlined>
-        );
-    }
     return (
         <div>
             <Select defaultValue={tags} mode="multiple" style={{width: "100%", margin: "10px 0"}} onChange={changingTag} placeholder="Please select a sport">
@@ -61,12 +43,7 @@ const Trial = () => {
                 })}
             </Select>
             <Title level={3}>Prochaines épreuves</Title>
-            <Carousel style={{width: "96%", transform: "translateX(-50%)", left: "50%"}} prevArrow={<SamplePrevArrow/>} nextArrow={<SampleNextArrow/>} slidesToShow={3} slidesToScroll={3} arrows={true} dots={false} afterChange={onChange} infinite={false} responsive={responsiveCarousel}>
-                <CardTrial></CardTrial>
-                <CardTrial></CardTrial>
-                <CardTrial></CardTrial>
-                <CardTrial></CardTrial>
-            </Carousel>
+            <CarouselTrial trials={trialsData.filter((trial)=> tagsData.includes(trial.sportTitle))} empty={empty}></CarouselTrial>
         </div>
     );
 };

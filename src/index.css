@@ -17,3 +17,13 @@ code {
 .slick-disabled{
   color: lightgray !important;
 }
+
+.card-media{
+  width: 300px;
+}
+
+@media (max-width: 1000px) {
+  .card-media{
+    width: 200px;
+  }
+}
