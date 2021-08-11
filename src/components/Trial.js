@@ -31,7 +31,7 @@ const Trial = () => {
     }else{
       setEmpty(false)
     }// change empty state for displaying "no data" mess. when no events are available
-  }// method called after select is changed ( onChange )
+  };// method called after select is changed ( onChange )
 
   return (
       <div>
@@ -44,7 +44,7 @@ const Trial = () => {
           </Select>
           <Title level={3}>Prochaines épreuves</Title>
           <CarouselTrial trials={// filter data with tagsData state array for displaying events from tags selected
-            trialsData.filter((trial)=> tagsData.includes(trial.sportTitle))} empty={empty /*state which tells if "no data" mess is displayed or not*/}></CarouselTrial>
+            trialsData.filter((trial)=> tagsData.includes(trial.sportTitle))} empty={empty /*state which tells if "no data" mess is displayed or not*/}/>
       </div>
   );
 };

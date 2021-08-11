@@ -1,8 +1,9 @@
 import React from 'react';
-import { Carousel } from 'antd';
-import { LeftCircleOutlined, RightCircleOutlined, WarningFilled} from '@ant-design/icons';
+import { Carousel, Empty } from 'antd';
 import CardTrial from './Card';
 import moment from 'moment';
+import LeftArrow from './LeftArrow';
+import RightArrow from './RightArrow';
 
 const CarouselTrial = ({trials, empty}) => {
   const responsiveCarousel= [
@@ -33,24 +34,12 @@ const CarouselTrial = ({trials, empty}) => {
       },
   ];// breakpoints for responsive of Carousel comp.
 
-  function SampleNextArrow({style, onClick, className}) {
-    // call of props is an obligation for its use in select comp. especially onClick, without it, not working 
-    return (
-        <RightCircleOutlined className={className} style={{...style, fontSize:"35px", color: "grey", width: "auto"}} onClick={onClick}></RightCircleOutlined>
-    );
-  }// new comp. for right arrow to display in the antd carousel comp. (nextArrow)
-  function SamplePrevArrow({style, onClick, className}) {
-    return (
-        <LeftCircleOutlined className={className} style={{...style, fontSize:"35px", color: "grey", zIndex: "1", width: "auto"}} onClick={onClick}></LeftCircleOutlined>
-    );
-  }// same new comp. for left arrow to display in the antd carousel comp. (prevArrow)
-
   return (
-    <div style={{position: "relative", width: "96%", height:"300px", transform: "translateX(-50%)", left: "50%"}}>
+    <div style={{position: "relative", width: "96%", transform: "translateX(-50%)", left: "50%"}}>
       {// ternary operator used here for displaying "no data" div or carousel if empty state from trial comp. is true or false
         empty
         ?
-        <div style={{height: "100%", display: "flex", flexDirection:"column", justifyContent:"center", alignItems: "center"}}><WarningFilled style={{fontSize: "55px"}}/><p>Aucune épreuve de prévu</p></div> 
+        <Empty description="Aucune épreuve de prévu"/> 
         :
         <Carousel 
           style={{width: "100%"}} 
@@ -59,8 +48,8 @@ const CarouselTrial = ({trials, empty}) => {
           slidesToScroll={3} 
           dots={false}
           arrows={true} 
-          prevArrow={<SamplePrevArrow/>} 
-          nextArrow={<SampleNextArrow/>} 
+          prevArrow={<LeftArrow/>} 
+          nextArrow={<RightArrow/>} 
           responsive={responsiveCarousel}
         >
           {trials.map((trial)=>{

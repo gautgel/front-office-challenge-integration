@@ -54,15 +54,15 @@ const Medals = () => {
       <div style={{margin: "0 0 25px 0"}}>
           <Title level={3}>Médailles</Title>
           <Table pagination={false} columns={columns} dataSource={data.map((data)=>{
-              const country = {};
-              country.key = data.key;// in order to make them unique, react warns us about it, not an obligation but better to use it
-              country.country = data.country;
-              country.gold = data.medals.gold;
-              country.silver = data.medals.silver;
-              country.bronze = data.medals.bronze;
-              country.total = country.gold + country.silver + country.bronze;
-              return country
-          })/* map data state array for creating a new array of objects which fits the columns data and provides the dataSource for the Table comp.*/}></Table>
+            const country = {};
+            country.key = data.key;// in order to make them unique, react warns us about it, not an obligation but better to use it
+            country.country = data.country;
+            country.gold = data.medals.gold;
+            country.silver = data.medals.silver;
+            country.bronze = data.medals.bronze;
+            country.total = country.gold + country.silver + country.bronze;
+            return country
+          })/* map data state array for creating a new array of objects which fits the columns data and provides the dataSource for the Table comp.*/}/>
       </div>
   );
 };
