@@ -8,11 +8,13 @@ const { Title } = Typography;
 
 const Home = () => {
     return (
+        // use of antd library in all components 
+        // displaying content with layout structure (header and content)
         <Layout>
             <Header style={{ backgroundColor: 'lightgrey', display: "flex", alignItems: "center", justifyContent: "center"}}>
                 <Title level={3}>JO 2020</Title>
             </Header>
-            <Content style={{margin: "0 100px"}}>
+            <Content>
                 <Trial></Trial>
                 <Divider style={{margin: "50px 0"}}></Divider>
                 <Medals></Medals>

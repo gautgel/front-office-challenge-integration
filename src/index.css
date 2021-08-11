@@ -18,12 +18,21 @@ code {
   color: lightgray !important;
 }
 
+/* add class to card and layout content for responsive behaviour */
 .card-media{
   width: 300px;
 }
+.ant-layout-content{
+  margin: 0 80px;
+}
 
-@media (max-width: 1000px) {
+/* responsive part */
+@media (max-width: 500px) {
   .card-media{
     width: 200px;
+  }
+
+  .ant-layout-content{
+    margin: 0 50px;
   }
 }

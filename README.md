@@ -55,8 +55,8 @@ React testing library est configuré et utilisable via `yarn test` pour ton conf
 Enjoy!
 
 
-Je me permets d'ajouter ceci car je fais en sorte de travailler avec un serveur local avec json-server:
+Je me permets d'ajouter ceci car je fais en sorte de travailler avec un serveur local avec json-server voici les conditions d'utilisation:
 
 -Installer JSON-SERVER : `npm i -g json-server`
 
--Faire tourner le back : `json-server --w src/assets/db.json --port 3004`
+-Faire tourner le back : `json-server --w src/assets/db.json --port (celui que vous souhaiter mais surtout pas un port deja utilisé sur le moment)`
