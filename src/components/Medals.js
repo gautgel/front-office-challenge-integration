@@ -13,10 +13,10 @@ const Medals = () => {
       .then((res)=>{
         setData(res.data);
       })// set data state with api response data
-  }// method used for calling api and putting it in data state
+  }// method used for calling api with axios
   useEffect(() => {
     getData();
-  }, []/* play it once*/);// use of useEffect method in order to avoid infinite load
+  }, []/* play it once*/);// use of useEffect method (same as componentDidMount and componentDidUpdate)
 
   const columns = [
     {
@@ -25,9 +25,9 @@ const Medals = () => {
     },
     {
       title: 'Or',
-      dataIndex: 'gold',// dataindex must be the same as the keys of dataSource
-      responsive: ['sm'], // media queries setted up by antd library xs, sm, md, lg etc. 
-      sorter: (a, b)=> a.gold - b.gold // funct. to call in order to sort the column, it uses the dataSource for parameters (here a and b)
+      dataIndex: 'gold',// dataindex must be the same as the keys of dataSource object (look at map method in Table's dataSource)
+      responsive: ['sm'], // media queries setted up by antd library (xs, sm, md, lg etc.)
+      sorter: (a, b)=> a.gold - b.gold // method to call in order to sort the column (dataSource is used for sort method)
     },
     {
       title: 'Argent',
@@ -45,7 +45,7 @@ const Medals = () => {
     {
       title: 'Total',
       dataIndex: 'total',
-      defaultSortOrder: 'descend', // set up of a default sorted column with descend or ascend
+      defaultSortOrder: 'descend', // set up of a default sorted column (with descend or ascend)
       sorter: (a, b)=> a.total - b.total
     },
   ]// data for columns in table comp.

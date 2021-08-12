@@ -16,7 +16,7 @@ const CarouselTrial = ({trials, empty}) => {
           }
       },
       {
-          breakpoint: 1200,
+          breakpoint: 1050,
           settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -24,7 +24,7 @@ const CarouselTrial = ({trials, empty}) => {
           }
       },
       {
-          breakpoint: 850,
+          breakpoint: 750,
           settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -36,13 +36,12 @@ const CarouselTrial = ({trials, empty}) => {
 
   return (
     <div style={{position: "relative", width: "96%", transform: "translateX(-50%)", left: "50%"}}>
-      {// ternary operator used here for displaying "no data" div or carousel if empty state from trial comp. is true or false
+      {// ternary operator used here for displaying empty comp. or carousel if empty state from Trial comp. is true or false
         empty
         ?
         <Empty description="Aucune épreuve de prévu"/> 
         :
-        <Carousel 
-          style={{width: "100%"}} 
+        <Carousel
           infinite={false}
           slidesToShow={3} 
           slidesToScroll={3} 
@@ -54,7 +53,7 @@ const CarouselTrial = ({trials, empty}) => {
         >
           {trials.map((trial)=>{
             return (
-              <CardTrial key={trial.id} sport={trial.sportId} name={trial.sportTitle} date={moment(parseInt(trial.date)).format('DD/MM/YYYY - HH:mm')/* use of moment js for date format */} src={trial.pictureUrl}></CardTrial>
+              <CardTrial key={trial.id} sport={trial.sportId} name={trial.sportTitle} date={moment(parseInt(trial.date)).format('DD/MM/YYYY - HH:mm')/* use of moment js for date format */} src={trial.pictureUrl}/>
             )
           })/*map array called from the trials prop in order to display all the CardTrial comp. with infos transfered in props*/}
         </Carousel>

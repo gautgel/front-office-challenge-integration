@@ -14,19 +14,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Roboto', monospace;
 }
 
+/* change color of arrows when disabled */
 .slick-disabled{
   color: lightgray !important;
 }
 
 /* add class to card and layout content for responsive behaviour */
 .card-media{
-  width: 300px;
+  width: 250px;
 }
 .ant-layout-content{
   margin: 0 80px;
 }
 
 /* responsive part */
+@media (min-width: 1200px) {
+  .card-media{
+    width: 300px;
+  }
+}
 @media (max-width: 500px) {
   .card-media{
     width: 200px;
